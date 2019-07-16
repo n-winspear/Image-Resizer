@@ -1,8 +1,7 @@
 #Script for resizing images.
 
 from PIL import Image
-from * import Point
-from * import PixelScanner
+from PixelScanner import PixelScanner
 
 image_size = (500, 400, 500 ,400)
 
@@ -16,12 +15,10 @@ image_list = [image_1, image_2, image_3, image_4]
 x = 0
 y = 0
 
-
-
 pixel_scanner = PixelScanner(image_4, TLPixel, TRPixel, BLPixel, BRPixel)
 
 for pixel_set in range(100):
 	if pixel_scanner.containscolourrange(0, 100):
-		#DO SOMETHING HERE
+		print("DO SOMETHING HERE")
 	else:
 		pixel_scanner.shift()

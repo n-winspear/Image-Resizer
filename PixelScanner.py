@@ -1,6 +1,5 @@
 #Pixel Scanner
 from PIL import Image
-import Point
 
 class PixelScanner:
 	def __init__(self, image):
@@ -28,7 +27,13 @@ class PixelScanner:
 			return False
 
 	def shift(self):
-		
+		self.x += 1
+		self.y += 1
+		self.TLPixel = image.getpixel(x, y) 
+		self.TRPixel = image.getpixel(x + 1, y)
+		self.BLPixel = image.getpixel(x, y + 1)
+		self.BRPixel = image.getpixel(x + 1, y + 1)
+
 
 
 
