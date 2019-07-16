@@ -1,7 +1,7 @@
 #Script for resizing images.
 
 from PIL import Image
-from PixelScanner import PixelScanner
+from .PixelScanner import PixelScanner
 
 image_size = (500, 400, 500 ,400)
 
