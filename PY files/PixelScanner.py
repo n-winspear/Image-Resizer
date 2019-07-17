@@ -1,40 +1,87 @@
 #Pixel Scanner
 from PIL import Image
 
-class PixelScanner:
-	def __init__(self, image):
-		self.image = image
-		
-		self.x
-		self.y
+global image_width
+global image_height
 
-		self.TLPixel = image.getpixel(x, y) 
-		self.TRPixel = image.getpixel(x + 1, y)
-		self.BLPixel = image.getpixel(x, y + 1)
-		self.BRPixel = image.getpixel(x + 1, y + 1)
+class PixelScanner:
+	def __init__(self):
+		self.x = 0 
+		self.y = 0
 
 	def __repr__(self):
-		return f"TL: {TLPixel} TR: {TRPixel} BL: {BLPixel} BR: {BRPixel}"
+		return f("TL: {TLPixel} TR: {TRPixel} BL: {BLPixel} BR: {BRPixel})")
 
-	def checkcolourrange(self, lower, upper):
-		if self.TLPixel[0] in range(lower, upper) && self.TLPixel[1] in range(lower, upper) && self.TLPixel[2] in range(lower, upper):		
+	def get_corners(self, image):
+		image_width, image_height = image.size()
+		corners = []
+		corners[0] = get_top_left()
+		corners[1] = get_top_right()
+		corners[2] = get_bottom_left()
+		corners[3] = get_bottom_right()
+		return corners
+
+	def contains_colour_range(self, lower, upper):
+		if self.TLPixel[0] in range(lower, upper) and self.TLPixel[1] in range(lower, upper) and self.TLPixel[2] in range(lower, upper):		
 			return True
-		else if self.TRPixel[0] in range(lower, upper) && self.TRPixel[1] in range(lower, upper) && self.TRPixel[2] in range(lower, upper):		
+		elif self.TRPixel[0] in range(lower, upper) and self.TRPixel[1] in range(lower, upper) and self.TRPixel[2] in range(lower, upper):		
 			return True
-		else if self.BLPixel[0] in range(lower, upper) && self.BLPixel[1] in range(lower, upper) && self.BLPixel[2] in range(lower, upper):		
+		elif self.BLPixel[0] in range(lower, upper) and self.BLPixel[1] in range(lower, upper) and self.BLPixel[2] in range(lower, upper):		
 			return True
-		else if self.BRPixel[0] in range(lower, upper) && self.BRPixel[1] in range(lower, upper) && self.BRPixel[2] in range(lower, upper):		
+		elif self.BRPixel[0] in range(lower, upper) and self.BRPixel[1] in range(lower, upper) and self.BRPixel[2] in range(lower, upper):		
 			return True
 		else:
 			return False
 
-	def shift(self):
-		self.x += 1
-		self.y += 1
-		self.TLPixel = image.getpixel(x, y) 
-		self.TRPixel = image.getpixel(x + 1, y)
-		self.BLPixel = image.getpixel(x, y + 1)
-		self.BRPixel = image.getpixel(x + 1, y + 1)
+	def get_top_left():
+		self.TLPixel = self.image.getpixel( (self.x, self.y) ) 
+		self.TRPixel = self.image.getpixel( (self.x + 1, self.y) )
+		self.BLPixel = self.image.getpixel( (self.x, self.y + 1) )
+		self.BRPixel = self.image.getpixel( (self.x + 1, self.y + 1) )
+
+		for pixel_set in range(100):
+			if contains_colour_range(0, 100):
+				return [self.x += 10, self.y += 10]
+			else:
+				shift("DR")
+
+	def get_top_right():
+		self.x = image_width
+		self.y = 0
+		self.TLPixel = self.image.getpixel( (self.x - 1, self.y) ) 
+		self.TRPixel = self.image.getpixel( (self.x, self.y) )
+		self.BLPixel = self.image.getpixel( (self.x - 1, self.y + 1) )
+		self.BRPixel = self.image.getpixel( (self.x, self.y + 1) )
+
+		for pixel_set in range(100):
+			if contains_colour_range(0, 100):
+				return [self.x -= 10, self.y += 10]
+			else:
+				shift("DL")
+
+
+
+	def shift(self, shift_direction):
+		if shift_direction == "DR":
+			self.x += 1
+			self.y += 1
+			self.TLPixel = self.image.getpixel( (self.x, self.y) ) 
+			self.TRPixel = self.image.getpixel( (self.x + 1, self.y) )
+			self.BLPixel = self.image.getpixel( (self.x, self.y + 1) )
+			self.BRPixel = self.image.getpixel( (self.x + 1, self.y + 1) )	
+			return
+
+		elif shift_direction == "DL":
+			self.x -= 1
+			self.y += 1
+			self.TLPixel = self.image.getpixel( (self.x - 1, self.y) ) 
+			self.TRPixel = self.image.getpixel( (self.x, self.y) )
+			self.BLPixel = self.image.getpixel( (self.x - 1, self.y + 1) )
+			self.BRPixel = self.image.getpixel( (self.x, self.y + 1) )
+
+			
+
+		
 
 
 
