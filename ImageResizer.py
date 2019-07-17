@@ -12,9 +12,6 @@ image_4 = Image.open("Photos/4.png")
 
 image_list = [image_1, image_2, image_3, image_4]
 
-x = 0
-y = 0
-
 pixel_scanner = PixelScanner(image_4, TLPixel, TRPixel, BLPixel, BRPixel)
 
 for pixel_set in range(100):

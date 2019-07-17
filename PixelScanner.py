@@ -4,8 +4,10 @@ from PIL import Image
 class PixelScanner:
 	def __init__(self, image):
 		self.image = image
+		
 		self.x
 		self.y
+
 		self.TLPixel = image.getpixel(x, y) 
 		self.TRPixel = image.getpixel(x + 1, y)
 		self.BLPixel = image.getpixel(x, y + 1)
