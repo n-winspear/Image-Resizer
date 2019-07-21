@@ -12,7 +12,7 @@ class Point:
         self.y += y
 
     def __repr__(self):
-    	return ("({0}, {1})".format(self.x, self.y))
+        return ("({0}, {1})".format(self.x, self.y))
 
-	def distance(a, b):
-		return sqrt((a.x-b.x)**2+(a.y-b.y)**2)
+    def distance(a, b):
+        return sqrt((a.x-b.x) ** 2 + (a.y-b.y) ** 2)
