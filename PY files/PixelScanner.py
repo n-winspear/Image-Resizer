@@ -27,10 +27,15 @@ class PixelScanner:
         image_height = list(self.image.size)[1]
 
         corners = []
+        print("1", str(self.TLPixel), str(self.TRPixel), str(self.BLPixel), str(self.BRPixel))
         corners.insert(0, self.get_top_left())
+        print("2", str(self.TLPixel), str(self.TRPixel), str(self.BLPixel), str(self.BRPixel))
         corners.insert(1, self.get_top_right())
+        print("3", str(self.TLPixel), str(self.TRPixel), str(self.BLPixel), str(self.BRPixel))
         corners.insert(2, self.get_bottom_left())
+        print("4", str(self.TLPixel), str(self.TRPixel), str(self.BLPixel), str(self.BRPixel))
         corners.insert(3, self.get_bottom_right())
+        print("5", str(self.TLPixel), str(self.TRPixel), str(self.BLPixel), str(self.BRPixel))
         return corners
 
     def contains_colour_range(self, lower, upper):

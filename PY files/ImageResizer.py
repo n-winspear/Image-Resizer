@@ -23,9 +23,8 @@ pixel_scanner = PixelScanner()
 for img in range(len(image_list)):
     corners = pixel_scanner.get_corners(image_list[img])
     crop_box = get_crop_box(corners)
-    print(corners)
     cropped_image = image_list[img].crop(crop_box)
     file_name = "{}.png".format(img)
-    print(file_name + "Saved")
+    #print(file_name + "Saved")
     #cropped_image.save(file_name)
 
