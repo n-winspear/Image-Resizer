@@ -20,11 +20,19 @@ def get_paste_box(edges):
     paste_box = (left_x, top_y, right_x, bottom_y)
     return paste_box
 
+def add_background(cropped_image):
+    max_image_size = (400, 500)
+    cropped_image.thumbnail(max_image_size)
+    offset = (0, (500 - (list(cropped_image.size)[1])) // 2)
+    background = Image.new("RGBA", (400, 500), (255, 255, 255, 255))
+    background.paste(cropped_image, offset)
+    return background
 
 for img in range(len(image_list)):
     edges = pixel_scanner.get_edges(image_list[img])
     paste_box = get_paste_box(edges)
     cropped_image = image_list[img].crop(paste_box)
+    final_image = add_background(cropped_image)
     file_name = "{}.png".format(img)
-    cropped_image.save("../Output/{}".format(file_name))
+    final_image.save("../Output/{}".format(file_name))
 
